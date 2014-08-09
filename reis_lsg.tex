@@ -1,0 +1,211 @@
+\documentclass{scrartcl}
+\title{Info D Klausur SS2014 Gruppe Reis}
+\author{Rasmus Diederichsen}
+\date{\today}
+\usepackage{microtype,
+   textcomp,
+   lastpage,
+   titlesec,
+   listings,
+   xcolor,
+   IEEEtrantools,
+   tabularx,
+   tikz,
+   fancyhdr,
+   array,
+   amsmath,
+   amssymb,
+   graphicx,
+   subcaption,
+lmodern}
+\usepackage[ngerman]{babel}
+\usepackage[top=2cm,bottom=2.5cm,right=2cm,left=2cm]{geometry}
+\usepackage[pdftitle={Info D Klausur SS2014 Gruppe Reis}, 
+   pdfauthor={Rasmus Diederichsen}, 
+   hyperfootnotes=true,
+   colorlinks,
+   bookmarksnumbered = true,
+   linkcolor = black,
+   plainpages = false,
+citecolor = lightgray]{hyperref}
+\lstset{
+   basicstyle=\footnotesize\ttfamily,
+   language=Python,
+   numbersep=-5pt,
+   breaklines=true,
+   commentstyle=\color{blue},
+   keywordstyle=\color{purple}\textbf,
+   numberstyle=\tiny\color{gray},
+   numbers=left,
+   stringstyle=\color{olive},
+}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[all]{hypcap}
+\titleformat{\subsection}{\normalfont\fontsize{12}{15}\bfseries}{\thesubsection}{1em}{}
+\titleformat{\section}{\normalfont\fontsize{12}{15}\bfseries}{\thesection}{1em}{}
+\DeclareMathOperator*{\op}{\bigcirc}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\emph{Blatt \thepage{} von \pageref{LastPage}}}
+\begin{document}
+
+\section*{Aufgabe 1: Sprache vs. Grammatik} 
+
+\subsection*{(a)} 
+
+\subsection*{(b) Grammatikdefinition \hfill{} \normalfont{(2 Punkte)}} 
+Definieren Sie kontextfreie Grammatiken (für Sprachen $L$ mit
+\vspace{\baselineskip}
+$\varepsilon\not\in L$).
+
+\begin{center}
+   \noindent\fcolorbox{lightgray}{lightgray!20}{
+      \begin{minipage}{.95\textwidth}
+         \emph{Alle Regeln haben die Form\ldots}
+         \vspace{\baselineskip}
+         \begin{equation*}
+            V \rightarrow (V \cup \Sigma)^+
+         \end{equation*}
+         \vspace{\baselineskip}
+      \end{minipage}
+   }
+\end{center}
+
+\section*{Aufgabe 2: Sprachen \hfill{} (12 Punkte)}
+
+\newcommand{\mpsol}{\colorbox{lightgray!20}{$\boxtimes$}}
+\renewcommand{\mp}{\colorbox{lightgray!20}{$\square$}}
+
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\textwidth}{ccX}
+   korrekt & falsch & \\ \hline
+   \mpsol & \mp & Die Sprache $\left\{0^k1^\ell2^k22^\ell \mid k,\ell\ge 0\right\}$ ist kontextfrei.\\
+   \mpsol & \mp & Nicht-deterministische Kellerautomaten, die maximal ein Symbol im Keller
+   speichern können, sind nur so mächtig wie deterministische
+   endliche Automaten. \\
+   \mp & \mpsol & Man kann jeden deterministischen Kellerautomaten in einen
+   nichtdeterministischen Kellerautomaten umformen, dessen Keller immer maximal 2
+   Elemente enthält.\\
+   \mp & \mpsol & Es gibt endliche Mengen, die nicht das Alphabet einer Sprache
+   sein können \\
+   \mpsol & \mp & Das Alphabet einer Sprache kann unendlich groß sein.\\
+   \mp & \mpsol & $\Sigma^*$ ist die Potenzmenge von $\Sigma$.
+\end{tabularx}
+
+\pagebreak 
+
+\section*{Aufgabe 8: Entscheidbarkeit \hfill{} (12 Punkte)}
+
+Wir definieren das Ergebnis des \emph{Klebeoperators} $\circ$ als die Zahl, die
+durch das Hintereinanderschreiben der Dezimaldarstellungen ihrer einzelnen
+Argumente repräentiert wird. Wir können mehrere Klebeoperationen gesammelt
+schreiben, z.B.
+
+\begin{equation*}
+   \op\limits_{i=1}^4 i^2 = 1 \circ 4 \circ 9 \circ 16 = 14916.
+\end{equation*}
+Betrachten Sie das folgende Problem:
+\begin{center}
+   \fbox{
+      \begin{minipage}{.95\textwidth}
+         \textbf{Gegeben}: Drei jeweils $m-$elementige Mengen $\mathcal{A} :=
+         \left\{a_i\right\}_{1\le i\le k}$, $\mathcal{B} :=
+         \left\{b_i\right\}_{1\le i\le k}$, $\mathcal{C} :=
+         \left\{c_i\right\}_{1\le i\le k}$ mit Elementen aus $\mathbb{N}$.
+
+         \noindent\textbf{Frage}: Gibt es eine Sequenz $s(1),s(2),\ldots,s(n)$ mit $n \ge
+         1$ und $s(i) \in \{1,\ldots,k\}$ für alle $1 \le i \le n$, sodass 
+
+         \begin{tabularx}{\textwidth}{>{\raggedleft\arraybackslash}p{.5\textwidth}cl>{\raggedleft\arraybackslash}X}
+         % \begin{IEEEeqnarray*}{+rCl+r*}
+            $\op\limits_{i=1}^na_{s(i)} - \op\limits_{i=1}^nb_{s(i)}$ & = & $\op\limits_{i=1}^nc_{s(i)}$ &  ("`Gleichung"')
+         \end{tabularx}
+      \end{minipage}
+   }
+\end{center}
+
+\subsection*{(a) Beispiele \hfill{} \normalfont{(4 Punkte)}}
+
+Geben Sie jeweils ein Beispiel einer Ja- und einer Nein-Instanz für dieses
+Problem an:\\[.5\baselineskip]
+Ja-Instanz \hfill{} Nein-Instanz
+
+\vspace{2pt}
+\setlength{\fboxsep}{10pt}
+   \noindent\fcolorbox{lightgray}{lightgray!20}{
+      \begin{minipage}[t][3cm]{.40\textwidth}
+         Sei $\mathcal{A} = \mathcal{B} := \left\{1,1,1\right\}, \mathcal{C}
+         := \{0,0,0\}$. Offensichtlich ist die Instanz lösbar mit $s(1) =
+         s(2) = s(3) \in \{1,2,3\}$.
+      \end{minipage}
+   }
+   \hfill{}\fcolorbox{lightgray}{lightgray!20}{
+      \begin{minipage}[t][3cm]{.40\textwidth}
+         $\mathcal{A} = \mathcal{B} = \mathcal{C} := \left\{1,2,3\right\}$
+      \end{minipage}
+   }
+
+\subsection*{(b) Semi-Entscheidbarkeit \hfill{} \normalfont{(4 Punkte)}}
+
+% lstlisting cannot go inside fbox, so we nee to do this shit
+\newsavebox{\codebox}
+\begin{lrbox}{\codebox}
+   \begin{lstlisting}[escapeinside={*}{*}]
+   for n = 1,...,*$\infty$*:
+      foreach *$\vec{i}$* in *$\{1,...,n\}^k$*:
+         if *$\op\limits_{i=1}^na_{\vec{i}[i]} - \op\limits_{i=1}^nb_{\vec{i}[i]}$ = $\op\limits_{i=1}^nc_{\vec{i}[i]}$*:
+            return true
+   \end{lstlisting}
+\end{lrbox}
+
+\noindent\fcolorbox{lightgray}{lightgray!20}{
+   \begin{minipage}[t][9cm]{.95\textwidth}
+      Wir beweisen die Semi-Entscheidbarkeit, indem wir einen Algorithmus
+      angeben, der eine Lösung findet, sofern sie existiert.
+
+      \begin{center}
+         \usebox{\codebox}
+      \end{center}
+
+      Es gibt in einer $n$-Elementigen Menge nur endlich viele Auswahlen von $k$
+      Elementen. Gibt es eine Lösung, wird sie also irgendwann gefunden.
+   \end{minipage}
+}
+
+\subsection*{(c) Unentscheidbarkeit \hfill{} \normalfont{(4 Punkte)}}
+
+Beschreiben Sie kurz die notwendige Reduktion (von? nach? wie?) um zu begründen,
+warum das Problem nicht entscheidbar ist:
+
+\vspace{4pt}
+\noindent\fcolorbox{lightgray}{lightgray!20}{
+   \begin{minipage}[t][9cm]{.95\textwidth}
+      Es muss ein unentscheidbares Problem auf das \emph{Klebeproblem} reduziert
+      werden. Es bietet sich hierfür das PCP an. Gegeben eine PCP-Instanz mit
+      Tupelmenge 
+      \begin{equation*}
+         \mathcal{M} = \{(x_i,y_i) \mid 1\le i\le k, x,y\in\mathbb{N}\}
+      \end{equation*} und $|\mathcal{M}| = k$, erstellen wir eine Klebeinstanz
+      mit 
+      \begin{equation*}
+         \mathcal{A} := \{x_i \mid 1\le i\le k,
+         (x_i,y_i)\in\mathcal{M}\},~\mathcal{B} := \{0\}^k,~\mathcal{C} := \{y_i \mid
+         1\le i \le k, (x_i,y_i)\in\mathcal{M}\}.
+      \end{equation*} 
+      Offensichtlich ist die PCP-Instanz lösbar, genau
+      dann, wenn die Klebeinstanz lösbar ist, da
+      \begin{equation*}
+         \op\limits_{i=1}^ka_{s(i)} - \{0\}^k = \op\limits_{i=1}^kc_{s(i)}
+      \end{equation*}
+      gleichbedeutend ist mit der Aussage, dass links dieselbe Zahl steht wie
+      rechts. Da links die $x_i$ der PCP-Instanz stehen und rechts die $y_i$,
+      sind die Problemstellungen identisch. Man muss eine Auswahl an Indizes
+      finden (wobei nicht alle $k$ vorkommen müssen, und Indizes mehrfach
+      verwended werden können), sodass die konkatenierten $x_i$ gleich den
+      konkatenierten $y_i$ sind, was genau der Klebeoperation entspricht.
+   \end{minipage}
+}
+\end{document}
