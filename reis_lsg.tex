@@ -21,6 +21,7 @@
    subcaption,
    lmodern}
 \usetikzlibrary{automata,arrows}
+\tikzstyle{every state}=[ minimum size=.8cm ]
 \usepackage[ngerman]{babel}
 \usepackage[top=2cm,bottom=2.5cm,right=2cm,left=2cm]{geometry}
 \usepackage[pdftitle={Info D Klausur SS2014 Gruppe Reis}, 
@@ -193,8 +194,7 @@ Sie Ihr Endergebnis bitte entsprechend.)
 \noindent\fcolorbox{black}{lightgray!20}{
    \begin{minipage}[c][20cm]{.95\textwidth}
       \begin{center}
-         \begin{tikzpicture}[->, auto, node distance=2cm,
-            every state/.style={minimum size=4pt, inner sep=4pt}]
+         \begin{tikzpicture}[->, auto, node distance=3cm]
             \node[state,initial]   (1)                    {};
             \node[state]           (2) [below of=1]       {};
             \node[state]           (3) [below right of=2] {};
@@ -226,8 +226,8 @@ einen Kellerautomaten an, der durch leeren Keller akzeptiert.
 \noindent\fcolorbox{black}{lightgray!20}{
    \begin{minipage}[c][7cm]{.95\textwidth}
       \begin{center}
-         \begin{tikzpicture}[->, auto, node distance=2cm,
-            every state/.style={minimum size=4pt, inner sep=4pt}]
+         \begin{tikzpicture}[->, auto, node distance=3cm,
+            ]
             \node[state,initial]   (1)              {};
             \node[state]           (2) [right of=1, node distance=3cm] {};
             \node[state]           (3) [right of=2] {};
@@ -258,8 +258,8 @@ die die folgende Funktion berechnet:
 \noindent\fcolorbox{black}{lightgray!20}{
    \begin{minipage}[c][10cm]{.95\textwidth}
       \begin{center}
-         \begin{tikzpicture}[->, auto, node distance=2cm,
-            every state/.style={minimum size=4pt, inner sep=4pt}]
+         \begin{tikzpicture}[->, auto, node distance=3cm,
+            ]
             \node[state,initial]   (1)              {};
             \node[state]           (2) [right of=1] {};
             \node[state]           (3) [right of=2] {};
@@ -380,9 +380,9 @@ Ja-Instanz \hfill{} Nein-Instanz
 \begin{lrbox}{\codebox}
    \begin{lstlisting}[escapeinside={*}{*}]
    for n = 1,...,*$\infty$*:
-   foreach *$\vec{i}$* in *$\{1,...,n\}^k$*:
-   if *$\op\limits_{i=1}^na_{\vec{i}[i]} - \op\limits_{i=1}^nb_{\vec{i}[i]}$ = $\op\limits_{i=1}^nc_{\vec{i}[i]}$*:
-   return true
+      foreach *$\vec{i}$* in *$\{1,...,n\}^k$*:
+         if *$\op\limits_{i=1}^na_{\vec{i}[i]} - \op\limits_{i=1}^nb_{\vec{i}[i]}$ = $\op\limits_{i=1}^nc_{\vec{i}[i]}$*:
+            return true
    \end{lstlisting}
 \end{lrbox}
 
